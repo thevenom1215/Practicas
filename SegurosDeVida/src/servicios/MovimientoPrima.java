@@ -2,15 +2,15 @@ package servicios;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import modelos.Forma_de_Pago;
+import modelos.Poliza;
+import modelos.Prima_seguros;
+import modelos.Usuario;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
-
-import registros.Poliza;
-import registros.Prima_seguros;
-import usuarios.Usuario;
-import tipos.Forma_de_Pago;
 
 public class MovimientoPrima {
 	

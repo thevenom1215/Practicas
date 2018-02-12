@@ -1,24 +1,25 @@
 package servicios;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.List;
+import modelos.Estatus_Poliza;
+import modelos.Poliza;
+import modelos.Retorno_Inversion;
+import modelos.Tipo_de_Cobertura;
+import modelos.Tipo_de_Poliza;
+import modelos.Usuario;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import usuarios.Usuario;
-import registros.Poliza;
-import registros.Retorno_Inversion;
-import tipos.Tipo_de_Poliza;
-import tipos.Tipo_de_Cobertura;
-import estatus.Estatus_Poliza;
-
+@Controller
 public class MovimientoPoliza {
 	
 AnnotationConfigApplicationContext conseguirDatos = new AnnotationConfigApplicationContext();
@@ -29,9 +30,6 @@ Retorno_Inversion 	retorno 	= (Retorno_Inversion) conseguirDatos.getBean("Retorn
 Tipo_de_Poliza 		tipo 		= (Tipo_de_Poliza) conseguirDatos.getBean("Tipo_de_Poliza");
 Tipo_de_Cobertura 	cobertura 	= (Tipo_de_Cobertura) conseguirDatos.getBean("Tipo_de_Cobertura");
 Estatus_Poliza 		estatus 	= (Estatus_Poliza) conseguirDatos.getBean("Estatus_Poliza");
-
-
-
 
 public void generarPoliza() throws ParseException{
 	
@@ -49,10 +47,10 @@ cobertura.setTipo_de_cobertura(0);
 poliza.setTasa_interes(0.25);
 poliza.setCobro_rescate(50000);
 retorno.setId_retorno_inversion(0);
-
 }
 
 
+@Autowired
 public ModelAndView obtenerPoliza() {
 ModelAndView modelo = new ModelAndView();
 Map <String, Double> mapeado = new HashMap<String, Double>();

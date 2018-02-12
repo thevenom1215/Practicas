@@ -2,12 +2,13 @@ package servicios;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import modelos.CondicionMedica;
+import modelos.Usuario;
+
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import usuarios.Usuario;
-import tipos.CondicionMedica;
 public class MovimientosUsuarios {
 	//generacion del metodo aplication context con anotaciones y asociacion de clases con beans
 	AnnotationConfigApplicationContext usuario_context = new AnnotationConfigApplicationContext();
