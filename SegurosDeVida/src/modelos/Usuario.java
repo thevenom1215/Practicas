@@ -7,28 +7,37 @@ import org.springframework.stereotype.Component;
 @Component
 public class Usuario {
 @Autowired	
-private int id_usuario 		= 0;
-private int edad 			= 0;
-private int numero 			= 0;
-private int codigo_postal 	= 0;
-private String nombre 		= "";
-private String apellidos 	= "";
-private String genero 		= "";
-private String telefono		= "";
-private String celular		= "";
-private String correo		= "";
-private String calle 		= "";
-private String locacion 	= "";
-private String ciudad 		= "";
-private String estado 		= "";
-private String pais  		= "";
-private String rfc 			= "";
-private String curp 		= "";
-private String Direccion 	= "";
-private String ocupacion 	= "";
-private String estado_civil	= "";
-private String pasatiempos	= "";
+private int id_usuario 			= 0;
+private int edad 				= 0;
+private int numero 				= 0;
+private int codigo_postal 		= 0;
+private int id_condicionMedica 	= 0;
+private String nombre 			= "";
+private String apellidos 		= "";
+private String genero 			= "";
+private String telefono			= "";
+private String celular			= "";
+private String correo			= "";
+private String calle 			= "";
+private String locacion 		= "";
+private String ciudad 			= "";
+private String estado 			= "";
+private String pais  			= "";
+private String rfc 				= "";
+private String curp 			= "";
+private String Direccion 		= "";
+private String ocupacion 		= "";
+private String estado_civil		= "";
+private String pasatiempos		= "";
 private Date fecha_de_nacimiento;
+
+public int getId_condicionMedica() {
+	return id_condicionMedica;
+}
+
+public void setId_condicionMedica(int id_condicionMedica) {
+	this.id_condicionMedica = id_condicionMedica;
+}
 
 public int getId_usuario() {
 	return id_usuario;
