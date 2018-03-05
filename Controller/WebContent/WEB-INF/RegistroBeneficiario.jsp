@@ -4,17 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet” type=”text/css”/>
+<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
+<title>Registro de datos de beneficiario</title>
 </head>
 <body>
-<h1>My first controller data</h1>
-<h2>${salute}</h2>
-
-<!-- Datos a llenar del usuario -->
-<h2>Registro de datos de usuario</h2>
-
-<form action="registroExitoso.jsp" method = "POST">
-
+<h2>Registro de datos de beneficiario</h2>
 <table class = "table table-condensed table-responsive">
 
 <tr>
@@ -35,7 +30,7 @@
 <tr>
 <td><a>Edad:</a></td>
 <td><input type = "text" name = "edad"></td>
-<tr>
+</tr>
 
 <tr>
 <td><a>Genero:</a></td>
@@ -60,7 +55,7 @@
 <tr>
 <td><a>Calle:</a></td>
 <td><input type = "text" name = "calle"></td>
-<tr>
+</tr>
 
 <tr>
 <td><a>Numero:</a></td>
@@ -87,42 +82,6 @@
 <td><input type = "text" name = "pais"></td>
 </tr>
 
-<tr>
-<td><a>Ocupacion:</a></td>
-<td><input type = "text" name = "ocupacion"></td>
-</tr>
-
-<tr>
-<td><a>Estado civil:</a></td>
-<td><input type = "text" name = "estado civil"></td>
-</tr>
-
-<tr>
-<td><a>pasatiempos:</a></td>
-<td><input type = "text" name = "pasatiempos"></td>
-</tr>
-
-<tr>
-<td><a>RFC:</a></td>
-<td><input type = "text" name = "rfc"></td>
-</tr>
-
-<tr>
-<td><a>CURP:</a></td>
-<td><input type = "text" name = "curp"></td>
-</tr>
-
-<tr>
-<td><a>Condicion medica</a></td>
-<td><select name = "salud">
-<option value = "opcion1">opcion 1</option>
-<option value = "opcion2">opcion 2</option>
-</select></td>
-</tr>
-
 </table>
-</form>
-
-
 </body>
 </html>

@@ -6,10 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ControllerHello {
 	
-@RequestMapping("/hello")
+@RequestMapping("/hello.do")
 public ModelAndView sayHello() {
-
-	ModelAndView modelo = new ModelAndView();
+	ModelAndView modelo = new ModelAndView("HelloPage");
 	modelo.addObject("salute","ola k ase");
 	return modelo;}
+
+@RequestMapping("/usuario.do")
+public ModelAndView datos() {
+	ModelAndView datos = new ModelAndView("DatosUsuario");
+	datos.addObject("nombre","Jorge");
+	return datos;
+}
+
 }

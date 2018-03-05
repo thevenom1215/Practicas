@@ -5,15 +5,13 @@
 								http://www.springframework.org/schema/beans/spring-beans.xsd
 								http://www.springframework.org/schema/context
 								http://www.springframework.org/schema/context/spring-context.xsd">
-
-<bean id = "HandlerMapping" class = "org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
-
+<!-- Here is all the beans -->
+	
 <context:component-scan base-package="controllerPackage"/>
-
-<bean id = "/hello.html" class = "controllerPackage"/>
 
 <bean id = "viewResolver" class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
 <property name = "prefix" value = "/WEB-INF/" />
 <property name = "suffix" value = ".jsp" />
 </bean>
+
 </beans>

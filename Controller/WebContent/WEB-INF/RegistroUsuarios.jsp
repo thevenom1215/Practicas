@@ -3,12 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- relaciones con los links y javascript -->
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet” type=”text/css”/>
+<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
+<title>Registro de datos de usuario</title>
 </head>
 <body>
-<h1>My first controller data</h1>
-<h2>${salute}</h2>
 
 <!-- Datos a llenar del usuario -->
 <h2>Registro de datos de usuario</h2>
@@ -122,7 +123,5 @@
 
 </table>
 </form>
-
-
 </body>
 </html>
