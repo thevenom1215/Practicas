@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Tipo_de_Poliza {
 
-private static HashMap <Integer,String> tipoPoliza = new HashMap<Integer,String>();
+public static HashMap <Integer,String> tipoPoliza = new HashMap<Integer,String>();
 
 public static HashMap<Integer, String> getTipoPoliza() {
 	return tipoPoliza;

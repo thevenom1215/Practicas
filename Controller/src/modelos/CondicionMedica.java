@@ -8,14 +8,15 @@ public class CondicionMedica {
 	
 @Autowired
 
-private Map <Integer,String> condicionMedica = new HashMap<Integer,String>();
+public static Map <Integer,String> condicionMedica = new HashMap<Integer,String>();
 
-public Map<Integer, String> getCondicionMedica() {
+public static Map<Integer, String> getCondicionMedica() {
 	return condicionMedica;
 }
 
-public void setCondicionMedica(Map<Integer, String> condicionMedica) {
-	this.condicionMedica = condicionMedica;
+public static void setCondicionMedica(Map<Integer, String> condicionMedica) {
+	CondicionMedica.condicionMedica = condicionMedica;
 }
+
 
 }

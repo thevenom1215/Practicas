@@ -37,20 +37,11 @@ poliza.setSuma_asegurada(0);
 poliza.setId_estatus(0);
 poliza.setFecha_celebracion(fecha);
 poliza.setId_tipo(0);
-
-cobertura.setTipo_de_cobertura(0);
+poliza.setCobertura(0);
 
 poliza.setTasa_interes(0);
 poliza.setCobro_rescate(0);
 retorno.setId_retorno_inversion(0);
-}
-
-@RequestMapping("/generar.do")
-public ModelAndView datosUsuario() {
-	user.setNombre("Jorge");
-	ModelAndView datosUsuario = new ModelAndView("DatosUsuario");
-	datosUsuario.addObject("nombre", user.getNombre());
-	return datosUsuario;
 }
 
 }

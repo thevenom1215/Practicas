@@ -10,6 +10,7 @@ private int no_de_folio;
 private int id_estatus;
 private int id_tipo;
 private int id_usuario;
+private int cobertura;
 private double suma_asegurada;
 private double tasa_interes;
 private double cobro_rescate;
@@ -69,6 +70,12 @@ public int getId_usuario() {
 }
 public void setId_usuario(int id_usuario) {
 	this.id_usuario = id_usuario;
+}
+public int getCobertura() {
+	return cobertura;
+}
+public void setCobertura(int cobertura) {
+	this.cobertura = cobertura;
 }
 
 }

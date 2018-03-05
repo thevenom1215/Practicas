@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<title>Registro de datos de usuario</title>
 </head>
 <body>
-<h1>My first controller data</h1>
-<h2>${salute}</h2>
 
 <!-- Datos a llenar del usuario -->
 <h2>Registro de datos de usuario</h2>
@@ -83,7 +82,7 @@
 </tr>
 
 <tr>
-<td><a>País:</a></td>
+<td><a>Pais:</a></td>
 <td><input type = "text" name = "pais"></td>
 </tr>
 
@@ -115,9 +114,18 @@
 <tr>
 <td><a>Condicion medica</a></td>
 <td><select name = "salud">
-<option value = "opcion1">opcion 1</option>
-<option value = "opcion2">opcion 2</option>
-</select></td>
+
+
+<c:forEach var = "elemento" items = "${lista}" varStatus = "pos">
+<option value = "${pos.index}">${elemento}</option>
+</c:forEach>
+
+
+</select>
+
+
+
+</td>
 </tr>
 
 </table>
