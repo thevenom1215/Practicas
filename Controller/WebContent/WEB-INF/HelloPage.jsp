@@ -12,7 +12,7 @@
 <!-- Datos a llenar del usuario -->
 <h2>Registro de datos de usuario</h2>
 
-<form action="registroExitoso.jsp" method = "POST">
+<form  th:action = "@{/asegurado}" th:object = "${asegurado}" method = "POST">
 
 <table class = "table table-condensed table-responsive">
 
@@ -114,8 +114,6 @@
 <tr>
 <td><a>Condicion medica</a></td>
 <td><select name = "salud">
-
-
 <c:forEach var = "elemento" items = "${lista}" varStatus = "pos">
 <option value = "${pos.index}">${elemento}</option>
 </c:forEach>
@@ -127,8 +125,8 @@
 
 </td>
 </tr>
-
 </table>
+<input type = "submit" value = "Enviar">
 </form>
 
 

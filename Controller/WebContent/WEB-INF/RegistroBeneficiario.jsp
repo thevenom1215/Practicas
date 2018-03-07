@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet” type=”text/css”/>
-<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
+
 <title>Registro de datos de beneficiario</title>
 </head>
 <body>
+
 <h2>Registro de datos de beneficiario</h2>
-<table class = "table table-condensed table-responsive">
+<table>
 
 <tr>
 <td><a>Nombre:</a></td>
@@ -78,7 +78,7 @@
 </tr>
 
 <tr>
-<td><a>País:</a></td>
+<td><a>Pais:</a></td>
 <td><input type = "text" name = "pais"></td>
 </tr>
 
