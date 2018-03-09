@@ -11,6 +11,7 @@ private int id_estatus;
 private int id_tipo;
 private int id_usuario;
 private int cobertura;
+private int id_retorno_inv;
 private double suma_asegurada;
 private double tasa_interes;
 private double cobro_rescate;
@@ -77,5 +78,13 @@ public int getCobertura() {
 public void setCobertura(int cobertura) {
 	this.cobertura = cobertura;
 }
+public int getId_retorno_inv() {
+	return id_retorno_inv;
+}
+public void setId_retorno_inv(int id_retorno_inv) {
+	this.id_retorno_inv = id_retorno_inv;
+}
+
+
 
 }

@@ -6,8 +6,8 @@ import com.mysql.jdbc.Connection;
 
 public class ConexionBD {
 	String dbnombre 	=	"segurosdevida";
-	String usuario 		=	"thevenom1215";
-	String contraseña 	= 	"thevenom1215";
+	String usuario 		=	"root";
+	String contraseña 	= 	"";
 	String url 			= 	"jdbc:mysql://localhost/"+dbnombre;
 	
 	Connection conexion = null;

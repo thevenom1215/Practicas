@@ -1,13 +1,12 @@
 package modelos;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import java.util.Date;
 
-@Component
 public class Prima_seguros {
-@Autowired
+
 private int id_pago;
+private int id_poliza;
+private int id_usuario;
 private int no_de_folio;
 private Date fecha_generacion_recibo;
 private Date fecha_limite;
@@ -20,6 +19,18 @@ public int getId_pago() {
 }
 public void setId_pago(int id_pago) {
 	this.id_pago = id_pago;
+}
+public int getId_poliza() {
+	return id_poliza;
+}
+public void setId_poliza(int id_poliza) {
+	this.id_poliza = id_poliza;
+}
+public int getId_usuario() {
+	return id_usuario;
+}
+public void setId_usuario(int id_usuario) {
+	this.id_usuario = id_usuario;
 }
 public int getNo_de_folio() {
 	return no_de_folio;
