@@ -10,8 +10,8 @@
 <body>
 
 <h2>Registro de datos de beneficiario</h2>
+<form action="registroBeneficiario.do" method = "POST">
 <table>
-
 <tr>
 <td><a>Nombre:</a></td>
 <td><input type = "text" name = "nombre"></td>
@@ -81,7 +81,9 @@
 <td><a>Pais:</a></td>
 <td><input type = "text" name = "pais"></td>
 </tr>
-
 </table>
+<input type = "submit" value = "registrar"/>
+</form>
+
 </body>
 </html>

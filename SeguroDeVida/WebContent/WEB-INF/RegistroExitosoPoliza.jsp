@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Insert title here</title>
+<title>Registro exitoso poliza</title>
 </head>
 <body>
-<h2>Registro Exitoso de asegurado</h2>
+<h2>Registro de poliza realizado con exito</h2>
 
 <table>
 <c:forEach var = "llave" items = "${llaves}" varStatus = "pos">
@@ -17,7 +17,7 @@
 <td>${valores[pos.index]}</td>
 </tr>
 </c:forEach>
-</table> 
+</table>
 
 </body>
 </html>

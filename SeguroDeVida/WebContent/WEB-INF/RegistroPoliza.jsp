@@ -13,7 +13,7 @@
 
 <h2>Generacion de nueva poliza</h2>
 
-<form action = "CrearPoliza.jsp" method = "POST">
+<form action = "registroPoliza.do" method = "POST">
 <table>
 
 <tr>
@@ -23,7 +23,7 @@
 
 <tr>
 <td>Id Usuario</td>
-<td><p contentEditable = "false"><input type = "number" name = "id usuario"></p></td>
+<td><input type = "number" name = "id usuario"></td>
 </tr>
 
 <tr>
@@ -33,7 +33,7 @@
 
 <tr>
 <td>Estatus</td>
-<td><p contentEditable = "false">	<input type ="text" name = "id estatus"></p></td>
+<td><p contentEditable = "false"><input type ="text" name = "id estatus" value = "01"></p></td>
 </tr>
 
 <tr>	

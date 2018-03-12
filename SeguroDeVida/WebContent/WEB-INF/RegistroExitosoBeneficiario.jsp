@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Registro Exitoso de asegurado</h2>
 
 <table>
 <c:forEach var = "llave" items = "${llaves}" varStatus = "pos">
@@ -17,7 +16,7 @@
 <td>${valores[pos.index]}</td>
 </tr>
 </c:forEach>
-</table> 
+</table>
 
 </body>
 </html>

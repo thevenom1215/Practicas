@@ -117,8 +117,6 @@
 <c:forEach var = "elemento" items = "${lista}" varStatus = "pos">
 <option value = "${pos.index}">${elemento}</option>
 </c:forEach>
-
-
 </select>
 
 </td>
