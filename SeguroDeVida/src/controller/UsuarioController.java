@@ -2,6 +2,9 @@ package controller;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -31,33 +34,42 @@ public ModelAndView sayHello() {
 
 
 //Controller registro exitoso
-
 @PostMapping("/registroExitoso.do")
-public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario)throws Exception {
+public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, @RequestParam("nacimiento") String nacimiento)throws Exception {
 	
 	ModelAndView modeloUsuario = new ModelAndView("RegistroExitosoUsuario");
 	Usuario usuario = new Usuario();
+	ArrayList <String> llaves = new ArrayList<String>();
+	ArrayList <String> valores = new ArrayList<String>();
+	
+	Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(nacimiento);
 	usuario.setNombre(datosUsuario.get("nombre"));
 	usuario.setApellidos(datosUsuario.get("apellidos"));
-	//usuario.setFecha_de_nacimiento(datosUsuario.get("nacimiento"));
-	//usuario.setEdad(datosUsuario.get("edad"));	
-	datosUsuario.get("genero");
-	datosUsuario.get("telefono");
-	datosUsuario.get("celular");
-	datosUsuario.get("correo");
-	datosUsuario.get("calle");
-	datosUsuario.get("numero");
-	datosUsuario.get("codigo postal");
-	datosUsuario.get("ciudad");
-	datosUsuario.get("estado");
-	datosUsuario.get("pais");
-	datosUsuario.get("ocupacion");
-	datosUsuario.get("estado civil");
-	datosUsuario.get("pasatiempos");
-	datosUsuario.get("rfc");
-	datosUsuario.get("curp");
+	usuario.setFecha_de_nacimiento(fecha);
+	usuario.setEdad(Integer.parseInt(datosUsuario.get("edad")));	
+	usuario.setGenero(datosUsuario.get("genero"));
+	usuario.setTelefono(datosUsuario.get("telefono"));
+	usuario.setCelular(datosUsuario.get("celular"));
+	usuario.setCorreo(datosUsuario.get("correo"));
+	usuario.setCalle(datosUsuario.get("calle"));
+	usuario.setNumero(Integer.parseInt(datosUsuario.get("numero")));
+	usuario.setCodigo_postal(Integer.parseInt(datosUsuario.get("codigo postal")));
+	usuario.setDireccion();
+	usuario.setCiudad(datosUsuario.get("ciudad"));
+	usuario.setEstado(datosUsuario.get("estado"));
+	usuario.setPais(datosUsuario.get("pais"));
+	usuario.setLocacion();
+	usuario.setOcupacion(datosUsuario.get("ocupacion"));
+	usuario.setEstado(datosUsuario.get("estado civil"));
+	usuario.setPasatiempos(datosUsuario.get("pasatiempos"));
+	usuario.setRfc(datosUsuario.get("rfc"));
+	usuario.setCurp(datosUsuario.get("curp"));
 	
-	modeloUsuario.addObject("lista",datosUsuario);
+	llaves.addAll(datosUsuario.keySet());
+	valores.addAll(datosUsuario.values());
+	
+	modeloUsuario.addObject("llaves",llaves);
+	modeloUsuario.addObject("valores",valores);
 	
 	return modeloUsuario;
 	}
