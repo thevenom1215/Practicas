@@ -4,10 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Busqueda Poliza</title>
 </head>
 <body>
-<h2>Algo ha ocurrido al intentar guardar, por favor intenta de nuevo</h2>
-<a href ="main.do"><button>regresar</button></a>
+
+<h2>Busqueda Poliza</h2>
+
+<form action = "ResultadoBusquedaPoliza" method = "POST">
+
+<table>
+<tr>
+<td>No de folio</td>
+<td><input type = "number" name = "no de folio"></td>
+</tr>
+</table>
+
+<input type = "submit" value = "consultar">
+</form>
+
 </body>
 </html>

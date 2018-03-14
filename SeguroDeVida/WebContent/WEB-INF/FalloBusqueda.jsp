@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Algo ha ocurrido al intentar guardar, por favor intenta de nuevo</h2>
-<a href ="main.do"><button>regresar</button></a>
+<h2>Woops!</h2>
+<h4>algo ha ocurrido con tu busqueda, por favor vuelve a intentarlo</h4>
+<a href = "main.do"><button>Regresar</button></a>
 </body>
 </html>
