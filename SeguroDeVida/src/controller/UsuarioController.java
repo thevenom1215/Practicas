@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import modelos.CondicionMedica;
 import modelos.Usuario;
 
+import servicio.ServiciosUsuario;
+
+import acceso.DAOUsuarioImpl;
 
 @Controller
 public class UsuarioController {
@@ -37,12 +40,13 @@ public ModelAndView sayHello() {
 @PostMapping("/registroExitoso.do")
 public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, @RequestParam("nacimiento") String nacimiento)throws Exception {
 	
-	ModelAndView modeloUsuario = new ModelAndView("RegistroExitosoUsuario");
+	ServiciosUsuario servicio = new ServiciosUsuario();
+	ModelAndView modeloUsuario;
 	Usuario usuario = new Usuario();
 	ArrayList <String> llaves = new ArrayList<String>();
 	ArrayList <String> valores = new ArrayList<String>();
-	
 	Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(nacimiento);
+	
 	usuario.setNombre(datosUsuario.get("nombre"));
 	usuario.setApellidos(datosUsuario.get("apellidos"));
 	usuario.setFecha_de_nacimiento(fecha);
@@ -68,8 +72,14 @@ public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, 
 	llaves.addAll(datosUsuario.keySet());
 	valores.addAll(datosUsuario.values());
 	
+	servicio.verificacionUsuario(usuario);
+	DAOUsuarioImpl inserta = new DAOUsuarioImpl();
+	inserta.registrar(usuario);
+	
+	modeloUsuario = new ModelAndView("RegistroExitosoUsuario");
 	modeloUsuario.addObject("llaves",llaves);
 	modeloUsuario.addObject("valores",valores);
+	
 	
 	return modeloUsuario;
 	}

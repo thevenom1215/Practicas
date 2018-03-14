@@ -6,15 +6,18 @@ import conexion.ConexionBD;
 import modelos.Usuario;
 
 public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
-
+	ConexionBD conecta;
+	
 	@Override
 	public void registrar(Usuario usuario) throws Exception {
 		try {
+			conecta = new ConexionBD();
+			conecta.getConnection();
 			this.getConnection();
-			PreparedStatement pstm = this.getConnection().prepareStatement("INSERT INTO "
-					+ "usuarios "
-					+ "(nombre,apellidos,fecha de nacimiento, edad, genero, telefono, celular, correo, direccion, locacion, opcupacion, estado civil, pasatiempos, rfc, curp, id condicion medica) "
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			
+			String sql = "INSERT INTO 'usuarios' ('nombre','apellidos','fecha de nacimiento', 'edad', 'genero', 'telefono', 'celular', 'correo', 'direccion', 'locacion', 'ocupacion', 'estado civil', 'pasatiempos', 'rfc', 'curp', 'id condicion medica') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			
+			PreparedStatement pstm = conecta.getConnection().prepareStatement(sql);
 			
 			pstm.setString	(1,		usuario.getNombre());
 			pstm.setString	(2,		usuario.getApellidos());

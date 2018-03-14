@@ -1,32 +1,30 @@
 package conexion;
 
-//import ;
-import java.sql.*;
-import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.Connection;
 
 public class ConexionBD {
-	String dbnombre 	=	"segurosdevida";
-	String usuario 		=	"root";
-	String contraseña 	= 	"";
-	String url 			= 	"jdbc:mysql://localhost/"+dbnombre;
+	public Connection conexion		=	null;
+	public final String dbnombre	=	"segurosdevida";
+	public final String usuario		=	"root";
+	public final String contraseña	= 	"";
+	public final String url			= 	"jdbc:mysql://localhost:3306/"+dbnombre;
+	public final String driver		=	"com.mysql.jdbc.Driver";
 	
-	Connection conexion = null;
 	public ConexionBD(){
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conexion = (Connection) DriverManager.getConnection(url, usuario, contraseña);
+			Class.forName(driver);
+			conexion = DriverManager.getConnection(url, usuario, contraseña);
 		
 		if(conexion!=null) {
-			System.out.println("conexion a base de datos exitosa");
-		}
+			//System.out.println("conexion a base de datos exitosa");
+			}
 		}
 		catch(Exception e) {
-			System.out.println("Ha ocurrido un error: \n \n");
-			System.err.println(e.getMessage());}
-		
+			System.out.println("Ha ocurrido un error: " + e.getMessage());}
 	}
 	
-	public Connection getConnection() {
+	public java.sql.Connection getConnection() {		
 		return conexion;
 	}
 	
