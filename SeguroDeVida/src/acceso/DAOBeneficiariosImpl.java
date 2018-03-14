@@ -1,8 +1,11 @@
 package acceso;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import conexion.ConexionBD;
 import modelos.Beneficiario;
+import modelos.ListaBeneficiarios;
 
 public class DAOBeneficiariosImpl extends ConexionBD implements DAOBeneficiarios{
 
@@ -34,10 +37,27 @@ public class DAOBeneficiariosImpl extends ConexionBD implements DAOBeneficiarios
 	public void consultarBeneficiario(Beneficiario beneficiario) throws Exception {
 		try {
 			this.getConnection();
-		PreparedStatement pstm = this.getConnection().prepareStatement("SELECT * FROM beneficiarios WHERE nombre = ? AND apellidos = ?");
+		String sql = "SELECT * FROM beneficiarios WHERE nombre = '"+beneficiario.getNombre()+"' AND apellidos = '"+beneficiario.getApellidos()+"'";	
+			
+		Statement stm = this.getConnection().createStatement();
+		ResultSet rs = stm.executeQuery(sql);
+		ListaBeneficiarios beneficiarios = new ListaBeneficiarios();
+		while(rs.next()) {
+			
+		beneficiarios.getNombre().add(rs.getString("nombre"));
+		beneficiarios.getApellidos().add(rs.getString("apellidos"));
+		beneficiarios.getTelefono().add(rs.getString("telefono"));
+		beneficiarios.getCelular().add(rs.getString("celular"));
+		beneficiarios.getCorreo().add(rs.getString("correo"));
+		beneficiarios.getDireccion().add(rs.getString("direccion"));
+		beneficiarios.getLocacion().add(rs.getString("locacion"));
+		}
+		
+		/*PreparedStatement pstm = this.getConnection().prepareStatement("SELECT * FROM beneficiarios WHERE nombre = ? AND apellidos = ?");
 		pstm.setString(1, beneficiario.getNombre());
 		pstm.setString(2, beneficiario.getApellidos());
-		pstm.executeUpdate();}
+		pstm.executeUpdate();*/
+		}
 		catch(Exception e) {throw e;}
 		finally {this.desconectar();}
 	}

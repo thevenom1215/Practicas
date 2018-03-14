@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import modelos.CondicionMedica;
 import modelos.Usuario;
+import modelos.ListaUsuarios;
 
 import servicio.ServiciosUsuario;
 
@@ -22,6 +23,9 @@ import acceso.DAOUsuarioImpl;
 @Controller
 public class UsuarioController {
 
+	Usuario usuario = new Usuario();
+	ServiciosUsuario servicio = new ServiciosUsuario();
+	
 	/*Controladores de usuarios*/
 	
 //Controller de registro de usuarios
@@ -40,9 +44,9 @@ public ModelAndView sayHello() {
 @PostMapping("/registroExitoso.do")
 public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, @RequestParam("nacimiento") String nacimiento)throws Exception {
 	
-	ServiciosUsuario servicio = new ServiciosUsuario();
+	
 	ModelAndView modeloUsuario;
-	Usuario usuario = new Usuario();
+	
 	ArrayList <String> llaves = new ArrayList<String>();
 	ArrayList <String> valores = new ArrayList<String>();
 	Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(nacimiento);
@@ -72,18 +76,45 @@ public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, 
 	llaves.addAll(datosUsuario.keySet());
 	valores.addAll(datosUsuario.values());
 	
-	servicio.verificacionUsuario(usuario);
-	DAOUsuarioImpl inserta = new DAOUsuarioImpl();
-	inserta.registrar(usuario);
-	
-	modeloUsuario = new ModelAndView("RegistroExitosoUsuario");
-	modeloUsuario.addObject("llaves",llaves);
-	modeloUsuario.addObject("valores",valores);
-	
+	if(servicio.verificacionUsuario(usuario)==true) {
+		modeloUsuario = new ModelAndView("RegistroExitosoUsuario");
+		modeloUsuario.addObject("llaves",llaves);
+		modeloUsuario.addObject("valores",valores);
+	}
+	else {
+		modeloUsuario = new ModelAndView("FalloRegistro");}
 	
 	return modeloUsuario;
 	}
+	
+	@RequestMapping("/buscarUsuario.do")
+	public ModelAndView busquedaUsuario() {
+	return new ModelAndView("BusquedaUsuario");
+	}
 
-
+	@PostMapping("/resBusquedaUsuario.do")
+	public ModelAndView resultadoBusqueda(@RequestParam("nombre") String nombre, @RequestParam("apellidos") String apellidos) throws Exception{
+		ModelAndView consulta;
+		if(servicio.consultaUsuario(usuario)==true) {
+			ListaUsuarios lista = new ListaUsuarios();
+			
+			consulta = new ModelAndView("ResultadoBusquedaUsuario");
+			
+			consulta.addObject("id",lista.getId());
+			consulta.addObject("nombre",lista.getNombre());
+			consulta.addObject("apellidos",lista.getApellidos());
+			consulta.addObject("telefono",lista.getTelefono());
+			consulta.addObject("celular",lista.getCelular());
+			consulta.addObject("correo",lista.getCorreo());
+			consulta.addObject("direccion",lista.getDireccion());
+			consulta.addObject("locacion",lista.getLocacion());
+			
+		}
+		else {
+			consulta = new ModelAndView("ErrorBusqueda");
+		}
+		return consulta;
+		
+	}
 
 }

@@ -13,21 +13,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 import modelos.Beneficiario;
 
+import servicio.ServiciosBeneficiario;
+
 @Controller
 public class BeneficiariosController {
 	/*Controladores de beneficiarios*/
 
+	Beneficiario beneficiario = new Beneficiario();
+	ServiciosBeneficiario servicio = new ServiciosBeneficiario();
+	
 	//Controller registro de beneficiarios
 	@RequestMapping("beneficiario.do")
 	public ModelAndView beneficiario(){
 		return new ModelAndView("RegistroBeneficiario");
 		}
+	
 	//Controller de revision de datos
 	@PostMapping("/registroBeneficiario.do")
 	public ModelAndView registroBeneficiario(@RequestParam Map<String,String> datosBenef) throws Exception {
 		
 		ModelAndView registroBeneficiario = new ModelAndView("RegistroExitosoBeneficiario");
-		Beneficiario beneficiario = new Beneficiario();
+		
 		ArrayList <String> llaves = new ArrayList<String>();
 		ArrayList <String> valores = new ArrayList<String>();
 		
@@ -56,5 +62,24 @@ public class BeneficiariosController {
 		registroBeneficiario.addObject("llaves",llaves);
 		registroBeneficiario.addObject("valores",valores);
 		return registroBeneficiario;
+	}
+	
+	@RequestMapping("/buscarBeneficiario.do")
+	public ModelAndView busquedaBeneficiario() {
+		
+		ModelAndView busqueda = new ModelAndView();
+	
+		try {
+			if(servicio.busquedaBeneficiario(beneficiario) == true) {
+				busqueda = new ModelAndView("ResultadoBusquedaBeneficiario");
+				}
+			else {busqueda = new ModelAndView("FalloBusqueda");}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return busqueda;
+		
 	}
 }

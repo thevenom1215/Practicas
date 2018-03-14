@@ -1,7 +1,7 @@
 package pruebas;
 import java.sql.ResultSet;
 
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
 
 import conexion.ConexionBD;
 public class PruebaConexionDB extends ConexionBD{
@@ -9,7 +9,7 @@ public class PruebaConexionDB extends ConexionBD{
 	public void pruebaConexion(){
 		try{this.getConnection();
 			System.out.println("la conexion ha sido exitosa");
-		Statement stm = (Statement) this.getConnection().createStatement();	
+		Statement stm =  this.getConnection().createStatement();	
 		ResultSet rs = stm.executeQuery("SELECT * FROM usuarios");
 		while (rs.next()) {
 		

@@ -1,6 +1,5 @@
 package controller;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,9 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 import modelos.Tipo_de_Cobertura;
 import modelos.Tipo_de_Poliza;
 import modelos.Poliza;
+import modelos.ListaPolizas;
+
+import servicio.ServiciosPoliza;
 
 @Controller
 public class PolizaController {
+	
+	Poliza poliza = new Poliza();
+	ServiciosPoliza servicios = new ServiciosPoliza();
+	
 	/*Controladores de poliza*/
 
 	//Controller de registro de poliza
@@ -40,7 +46,7 @@ public class PolizaController {
 		ArrayList<String> llaves = new ArrayList<String>();
 		ArrayList<String> valores = new ArrayList<String>();
 		
-		Poliza poliza = new Poliza();
+		
 		
 		Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(datosPoliza.get("celebracion contrato"));
 		
@@ -65,4 +71,30 @@ public class PolizaController {
 		return vistaPoliza;
 	}
 
+	@RequestMapping("/buscarPoliza.do")
+	public ModelAndView busquedPoliza() throws Exception {
+		ModelAndView busqueda;
+		if(servicios.busquedaPoliza(poliza)==true) {
+			
+			ListaPolizas lista = new ListaPolizas();
+			
+			busqueda = new ModelAndView("ResultadoBusquedaPoliza");
+			
+			busqueda.addObject("no de poliza",lista.getNo_de_poliza());
+			busqueda.addObject("no de folio",lista.getNo_de_folio());
+			busqueda.addObject("id estatus",lista.getId_estatus());
+			busqueda.addObject("id tipo",lista.getId_tipo());
+			busqueda.addObject("id usuario",lista.getId_usuario());
+			busqueda.addObject("id retorno inv",lista.getId_retorno_inv());
+			busqueda.addObject("suma asegurada",lista.getSuma_asegurada());
+			busqueda.addObject("tasa de interes",lista.getTasa_interes());
+			busqueda.addObject("cobro de rescate",lista.getCobro_rescate());
+			busqueda.addObject("fecha celebracion",lista.getFecha_celebracion());
+		}
+		else {
+			busqueda = new ModelAndView("FalloBusqueda");
+		}
+		
+		return new ModelAndView("BusquedaPoliza");
+	}
 }

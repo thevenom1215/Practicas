@@ -1,9 +1,14 @@
 package acceso;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Date;
 
 import conexion.ConexionBD;
+
 import modelos.Usuario;
+import modelos.ListaUsuarios;
 
 public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
 	ConexionBD conecta;
@@ -12,16 +17,16 @@ public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
 	public void registrar(Usuario usuario) throws Exception {
 		try {
 			conecta = new ConexionBD();
-			conecta.getConnection();
 			this.getConnection();
 			
 			String sql = "INSERT INTO 'usuarios' ('nombre','apellidos','fecha de nacimiento', 'edad', 'genero', 'telefono', 'celular', 'correo', 'direccion', 'locacion', 'ocupacion', 'estado civil', 'pasatiempos', 'rfc', 'curp', 'id condicion medica') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstm = conecta.getConnection().prepareStatement(sql);
+			Date fecha = new Date (usuario.getFecha_de_nacimiento().getTime());
 			
 			pstm.setString	(1,		usuario.getNombre());
 			pstm.setString	(2,		usuario.getApellidos());
-			pstm.setDate	(3, 	(java.sql.Date) usuario.getFecha_de_nacimiento());
+			pstm.setDate	(3, 	fecha);
 			pstm.setInt		(4,		usuario.getEdad());
 			pstm.setString	(5, 	usuario.getGenero());
 			pstm.setString	(6,		usuario.getTelefono());
@@ -70,12 +75,31 @@ public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
 
 	@Override
 	public void buscar(Usuario usuario) throws Exception {
+		ListaUsuarios lista = new ListaUsuarios();
 		try {
 			this.getConnection();
-		PreparedStatement pstm = this.getConnection().prepareStatement("SELECT * FROM usuarios WHERE nombre = ? AND apellidos = ?");
+		String sql = "SELECT * FROM usuarios WHERE nombre = '"+usuario.getNombre()+"' AND apellidos = '"+usuario.getApellidos()+"'";	
+		
+		/*PreparedStatement pstm = this.getConnection().prepareStatement("SELECT * FROM usuarios WHERE nombre = ? AND apellidos = ?");
 		pstm.setString(1, usuario.getNombre());
 		pstm.setString(2, usuario.getApellidos());
-		pstm.executeUpdate();}
+		pstm.executeUpdate();
+		*/
+			Statement stm = this.getConnection().createStatement();
+			ResultSet rs = stm.executeQuery(sql);
+			while(rs.next()) {
+				
+				lista.getId().add(rs.getInt("id"));
+				lista.getNombre().add(rs.getString("nombre"));
+				lista.getApellidos().add(rs.getString("apellidos"));
+				lista.getTelefono().add(rs.getString("telefono"));
+				lista.getCelular().add(rs.getString("celular"));
+				lista.getCorreo().add(rs.getString("correo"));
+				lista.getDireccion().add(rs.getString("direccion"));
+				lista.getLocacion().add(rs.getString("locacion"));
+				
+			}
+		}
 		catch(Exception e) {throw e;}
 		finally {this.desconectar();}
 	}
