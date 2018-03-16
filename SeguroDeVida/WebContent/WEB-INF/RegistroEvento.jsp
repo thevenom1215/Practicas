@@ -24,9 +24,14 @@
 </tr>
 
 <tr>
+<td>Fecha del evento</td>
+<td><input type = "Date" name ="fecha del evento"></td>
+</tr>
+
+<tr>
 <td>Tipo de evento ocurrido</td>
 <td>
-<select>
+<select name = "evento">
 <c:forEach var = "elementos" items = "${eventos}" varStatus = "pos">
 <option value = "${pos.index}">${elementos}</option>
 </c:forEach>
@@ -34,8 +39,14 @@
 </td>
 </tr>
 
+<tr>
+<td>Descripcion:</td>
+<td><textarea name = "descripcion">Describa el evento acontecido</textarea></td>
+</tr>
+
 </table>
 <input type = "submit" value = "Registrar"/>
 </form>
+
 </body>
 </html>
