@@ -3,12 +3,13 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import conexion.ConexionBD;
 import modelos.Poliza;
 import modelos.ListaPolizas;
 
-public class DAOPolizaImpl extends ConexionBD implements DAOPoliza {
+public class DAOPolizaImpl extends ConexionBD implements DAOPoliza, DAOCoberturaPoliza {
 
 	@Override
 	public void registrar(Poliza poliza) throws Exception {
@@ -93,8 +94,29 @@ public class DAOPolizaImpl extends ConexionBD implements DAOPoliza {
 			}
 			
 		}catch(Exception e) {throw e;}
-		finally {this.desconectar();}
+		finally {this.desconectar();}	
+	}
+	
+	//Registrar datos de cobertura
+	@Override
+	public void registrarCobertura(ArrayList<Integer> cobertura, int poliza) throws Exception {
+		String sql = "INSERT INTO coberturaPoliza (no de poliza, id cobertura) VALUES (?,?)";
+		PreparedStatement stm = this.getConnection().prepareStatement(sql);
+		for(int i = 0 ; i<cobertura.size();i++) {
+		stm.setInt(1, poliza);
+		stm.setInt(2, cobertura.get(i));
+		stm.executeQuery();
+		}
+	}
+	
+	//Consultar datos de cobertura
+	@Override
+	public void consultarCobertura(ArrayList<Integer> cobertura, int poliza) throws Exception {
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
 
 }

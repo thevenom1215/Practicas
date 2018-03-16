@@ -1,6 +1,9 @@
 package servicio;
 
 import modelos.Poliza;
+
+import java.util.ArrayList;
+
 import acceso.DAOPolizaImpl;
 
 public class ServiciosPoliza {
@@ -25,6 +28,16 @@ boolean verificacion;
 			verificacion = true;
 			acceso.buscar(poliza);
 		}
+		return verificacion;
+	}
+	
+	public boolean registroCobertura(ArrayList <Integer> datos, int poliza) throws Exception{
+		verificacion = false;
+		if (datos.size() != 0 && poliza != 0) {
+			verificacion = true;
+			acceso.registrarCobertura(datos, poliza);
+		}
+		
 		return verificacion;
 	}
 	

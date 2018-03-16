@@ -17,7 +17,7 @@ public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
 	public void registrar(Usuario usuario) throws Exception {
 		try {
 			conecta = new ConexionBD();
-			this.getConnection();
+			//this.getConnection();
 			
 			String sql = "INSERT INTO 'usuarios' ('nombre','apellidos','fecha de nacimiento', 'edad', 'genero', 'telefono', 'celular', 'correo', 'direccion', 'locacion', 'ocupacion', 'estado civil', 'pasatiempos', 'rfc', 'curp', 'id condicion medica') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			

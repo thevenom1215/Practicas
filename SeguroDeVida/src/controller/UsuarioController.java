@@ -44,9 +44,7 @@ public ModelAndView sayHello() {
 @PostMapping("/registroExitoso.do")
 public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, @RequestParam("nacimiento") String nacimiento)throws Exception {
 	
-	
 	ModelAndView modeloUsuario;
-	
 	ArrayList <String> llaves = new ArrayList<String>();
 	ArrayList <String> valores = new ArrayList<String>();
 	Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(nacimiento);
@@ -86,7 +84,8 @@ public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, 
 	
 	return modeloUsuario;
 	}
-	
+
+	//Busqueda de asegurado
 	@RequestMapping("/buscarUsuario.do")
 	public ModelAndView busquedaUsuario() {
 	return new ModelAndView("BusquedaUsuario");

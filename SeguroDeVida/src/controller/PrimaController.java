@@ -14,9 +14,14 @@ import java.util.Map;
 
 import modelos.Prima_seguros;
 
+import servicio.ServiciosPrima;
+
 @Controller
 public class PrimaController {
-
+	
+	Prima_seguros prima = new Prima_seguros();
+	ServiciosPrima servicio = new ServiciosPrima();
+	
 	//Envio de informacion al recibo a generar
 	@RequestMapping("/recibo.do")
 	public ModelAndView vistaPrima() {
@@ -40,10 +45,11 @@ public class PrimaController {
 	//verificacion de informacion de recibo
 	@PostMapping("/generarRecibo.do")
 	public ModelAndView registroPrima(@RequestParam Map <String,String> datosRecibo) throws Exception {
+		
 		ModelAndView reciboPrima = new ModelAndView("GeneracionRecibo");
 		ArrayList <String> llaves = new ArrayList<String>();
 		ArrayList <String> valores = new ArrayList<String>();
-		Prima_seguros prima = new Prima_seguros();
+		
 		SimpleDateFormat formato = new SimpleDateFormat("dd-MM-YYYY");
 		Date generacion = formato.parse(datosRecibo.get("generacion"));
 		Date pago = formato.parse(datosRecibo.get("pago"));
@@ -64,6 +70,18 @@ public class PrimaController {
 		reciboPrima.addObject("valores",valores);
 		reciboPrima.addObject("lista", datosRecibo);
 		return reciboPrima;
+	}
+	
+	@RequestMapping("/buscarRecibo.do")
+	public ModelAndView verRecibos() {
+		ModelAndView ver = new ModelAndView();
+		try {
+		if(servicio.verificacionConsulta(prima)==true)
+		{ver = new ModelAndView("BusquedaPrima");}
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());}
+		return ver;
 	}
 	
 }

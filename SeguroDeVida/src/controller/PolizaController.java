@@ -15,6 +15,7 @@ import modelos.Tipo_de_Cobertura;
 import modelos.Tipo_de_Poliza;
 import modelos.Poliza;
 import modelos.ListaPolizas;
+import modelos.Tipo_de_Cobertura;
 
 import servicio.ServiciosPoliza;
 
@@ -39,18 +40,15 @@ public class PolizaController {
 		return poliza;
 	}
 	
+	//Registro de poliza nueva
 	@PostMapping("/registroPoliza.do")
 	public ModelAndView registroPoliza(@RequestParam Map<String,String> datosPoliza) throws Exception {
 		
 		ModelAndView vistaPoliza = new ModelAndView("RegistroExitosoPoliza");
 		ArrayList<String> llaves = new ArrayList<String>();
 		ArrayList<String> valores = new ArrayList<String>();
-		
-		
-		
 		Date fecha = new SimpleDateFormat("MM-DD-YYYY").parse(datosPoliza.get("celebracion contrato"));
-		
-		
+	
 		poliza.setNo_de_folio(Integer.parseInt(datosPoliza.get("no de folio")));
 		poliza.setId_usuario(Integer.parseInt(datosPoliza.get("id usuario")));
 		poliza.setSuma_asegurada(Double.parseDouble(datosPoliza.get("suma asegurada")));
@@ -71,6 +69,7 @@ public class PolizaController {
 		return vistaPoliza;
 	}
 
+	//Busqueda de poliza
 	@RequestMapping("/buscarPoliza.do")
 	public ModelAndView busquedPoliza() throws Exception {
 		ModelAndView busqueda;
@@ -96,5 +95,33 @@ public class PolizaController {
 		}
 		
 		return new ModelAndView("BusquedaPoliza");
+	}
+	
+	//Acceso a cobertura de poliza
+	@RequestMapping("/agregarCobertura.do")
+	public ModelAndView seleccionCobertura() {
+		ModelAndView vista = new ModelAndView("RegistrarCoberturaPoliza");
+		Tipo_de_Cobertura cobertura = new Tipo_de_Cobertura();
+		vista.addObject("poliza",poliza.getNo_de_folio());
+		vista.addObject("ids", cobertura.getCobertura().keySet());
+		vista.addObject("cobertura", cobertura.getCobertura().values());
+		return vista;
+	}
+	
+	//Registro cobertura de poliza
+	@PostMapping("/registrarCobertura.do")
+	public ModelAndView registraCobertura(@RequestParam("parametro") ArrayList <Integer> datos, @RequestParam("poliza") Integer poliza) {
+		ModelAndView respuesta = new ModelAndView();
+		
+		try{
+			if(servicios.registroCobertura(datos, poliza)==true) {
+				respuesta = new ModelAndView("RegistroExitosoPoliza");}
+			else {respuesta = new ModelAndView("FalloRegistro");}
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());}
+		
+		
+		return respuesta;
 	}
 }
