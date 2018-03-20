@@ -70,6 +70,7 @@ public ModelAndView recibeDatos(@RequestParam Map<String, String> datosUsuario, 
 	usuario.setPasatiempos(datosUsuario.get("pasatiempos"));
 	usuario.setRfc(datosUsuario.get("rfc"));
 	usuario.setCurp(datosUsuario.get("curp"));
+	usuario.setId_condicionMedica(Integer.parseInt(datosUsuario.get("salud")));
 	
 	llaves.addAll(datosUsuario.keySet());
 	valores.addAll(datosUsuario.values());

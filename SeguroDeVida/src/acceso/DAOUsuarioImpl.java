@@ -3,6 +3,7 @@ package acceso;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 
 import conexion.ConexionBD;
@@ -19,10 +20,14 @@ public class DAOUsuarioImpl extends ConexionBD implements DAOUsuario{
 			conecta = new ConexionBD();
 			//this.getConnection();
 			
-			String sql = "INSERT INTO 'usuarios' ('nombre','apellidos','fecha de nacimiento', 'edad', 'genero', 'telefono', 'celular', 'correo', 'direccion', 'locacion', 'ocupacion', 'estado civil', 'pasatiempos', 'rfc', 'curp', 'id condicion medica') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO `usuarios`(`nombre`, `apellidos`, `fecha de nacimiento`, `edad`, `genero`, `telefono`, `celular`, `correo`, `direccion`, `locacion`, `ocupacion`, `estado civil`, `pasatiempos`, `rfc`, `curp`, `Id condicion medica`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 			PreparedStatement pstm = conecta.getConnection().prepareStatement(sql);
-			Date fecha = new Date (usuario.getFecha_de_nacimiento().getTime());
+			
+			//Formato de la fecha
+			SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
+			Date fecha = new Date(usuario.getFecha_de_nacimiento().getTime());
+			formato.format(fecha);
 			
 			pstm.setString	(1,		usuario.getNombre());
 			pstm.setString	(2,		usuario.getApellidos());
