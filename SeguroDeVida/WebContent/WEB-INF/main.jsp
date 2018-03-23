@@ -5,15 +5,14 @@
 <!-- Inicio del header con acceso a las bibliotecas -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<script type="text/javascript" src ="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src = "js/sesion.js"></script>	
+
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src ="bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+		
 <title>Pagina principal</title>
 </head>
-
+<body>
 <nav class = "menu navbar navbar-default" id = "navbar">
 <div class = "container-fluid">
 <!-- Contenido visible en dispositivos grandes y medianos -->
@@ -30,6 +29,16 @@
 <a href = "" class ="navbar-brand" id = "nav-button">Usuarios</a>
 <a href = "" class ="navbar-brand" id = "nav-button">Polizas</a>
 <a href = "" class ="navbar-brand" id = "nav-button">Beneficiarios</a>
+<ul>
+<li class = "nav-item dropdown">
+<a class = "dropdown-menu" href = "#" id = "navbarDropdow" data-toggle = "dropdown" aria-haspopup = "true" aria-expanded = "false">Asegurados</a>
+<div class = "dropdown-menu" aria-labelledby = "navbarDropdow">
+<a class = "dropdown-item" href = "#">Registrar</a>
+<a class = "dropdown-item" href = "#">Consultar</a>
+<a class = "dropdown-item" href = "#">Editar</a>
+</div>
+</li>
+</ul>
 </asside>
 </div>
 
@@ -41,6 +50,9 @@
 <li><a href = "" id = "nav-button" class = "nav btn">Usuarios</a></li>
 <li><a href = "" id = "nav-button" class = "nav btn">Polizas</a></li>
 <li><a href = "" id = "nav-button" class = "nav btn">Beneficiarios</a></li>
+
+
+
 </ul>
 </asside>
 </div>
@@ -51,7 +63,7 @@
 <ul>
 <li><a href = ""></a></li>
 </ul>
-<body>
+
 
 </body>
 </html>
